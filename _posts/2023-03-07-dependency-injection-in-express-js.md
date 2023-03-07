@@ -4,7 +4,9 @@ date: 2023-03-07 10:11:00 +0000
 tags: [JavaScript, Node]
 render_with_liquid: false
 ---
-In this post I want to look at dependency injection in [Express](https://expressjs.com/). I found this approach while working through the [Practical Microservices](https://pragprog.com/titles/egmicro/practical-microservices/) book by Ethan Garofolo. Let's take a look. 
+In this post I want to look at dependency injection in [Express](https://expressjs.com/). 
+
+> Most of what's written here is based on the [Practical Microservices](https://pragprog.com/titles/egmicro/practical-microservices/) book by Ethan Garofolo. You should check that out for a more detailed explanation.
 
 What is dependency injection?
 
