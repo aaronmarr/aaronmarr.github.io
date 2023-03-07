@@ -378,7 +378,9 @@ function mountRoutes(app, config) {
 module.exports = mountRoutes;
 ```
 
-And that's it. You should now have an API which you can use to query users. 
+And that's it. You should now have an API which you can use to query users.
+
+> To run this example you will need the sql file which can be found [here](https://github.com/aaronmarr/express-di-example/blob/main/src/sqlite3.db) and should be placed in `/src/sqlite3.db`
 
 ```bash
 curl http://localhost:4000/users  
