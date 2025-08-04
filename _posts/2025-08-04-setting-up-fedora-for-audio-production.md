@@ -1,14 +1,22 @@
 ---
 title: Setting up Fedora Linux for audio production
 description: >-
-  Get started with Chirpy basics in this comprehensive overview.
-  You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.
+  In this post I will document setting up Fedora for audio production. I'll look at installing Bitwig, and optimising the system for audio. I'll also look at running VSTs via yabridge. 
 author: aaron
-date: 2025-07-04 20:57:00 +0000
+date: 2025-08-04 00:00:00 +0000
 categories: [Music Production]
 tags: [linux, audio]
 pin: true
 media_subpath: '/posts/20180809'
 ---
 
-## The post
+## Installing Bitwig
+
+Installing Bitwig on Fedora requires converting the official Deb package into RPM format so it can be installed on Fedora. 
+
+Use `alien` to convert the `.deb` package, the `dnf install` the resulting RPM package.
+
+```
+sudo alien -r bitwig-studio-5.3.12.deb
+sudo dnf install bitwig-studio-5.3.12.rpm
+```
