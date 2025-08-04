@@ -6,6 +6,10 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
+aaron:
+  name: Aaron Marr
+  url: https://github.com/aaronmarr/
+
 cotes:
   name: Cotes Chung
   twitter: cotes2020
