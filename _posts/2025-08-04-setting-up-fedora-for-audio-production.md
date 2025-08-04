@@ -18,5 +18,5 @@ Installing Bitwig on Fedora requires converting the official Ubuntu package into
 
 ```sh
 sudo alien -r bitwig-studio-5.3.12.deb
-sudo dnf install bitwig-studio-5.3.12.rpm
+sudo dnf install ./bitwig-studio-5.3.12-2.x86_64.rpm
 ```
