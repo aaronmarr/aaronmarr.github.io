@@ -1,7 +1,7 @@
 ---
 title: Setting up Fedora Linux for audio production
 description: >-
-  In this post I will document setting up Fedora for audio production. I'll look at installing Bitwig, and optimising the system for audio. I'll also look at running VSTs via yabridge. 
+  In this post I will look at setting up Fedora for audio production. I'll install Bitwig, and optimise the system for audio. I'll also look at running VSTs via yabridge. 
 author: aaron
 date: 2025-08-04 00:00:00 +0000
 categories: [Music Production]
