@@ -9,3 +9,17 @@
 ';
 
 /* append your custom style below */
+
+#avatar { display: none; }
+@media (min-width: 1650px) {
+  #sidebar .profile-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1650px) {
+  #sidebar .profile-wrapper .site-title a {
+    font-size: 1.7rem;
+    letter-spacing: -0.025em;
+  }
+}
