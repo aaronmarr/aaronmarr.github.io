@@ -12,7 +12,7 @@ media_subpath: '/posts/20180809'
 
 ## Installing Bitwig
 
-Installing Bitwig on Fedora requires converting the official Deb package into RPM format so it can be installed on Fedora. 
+Installing Bitwig on Fedora requires converting the official Ubuntu package into RPM format so it can be installed on Fedora. 
 
 [Download Bitwig](https://www.bitwig.com/download/), use `alien` to convert the `.deb` package, then `dnf install` the resulting RPM package.
 
