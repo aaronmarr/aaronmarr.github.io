@@ -13,6 +13,12 @@
 
 #avatar { display: none !important; }
 
+@media (min-width: 850px) {
+    #sidebar .profile-wrapper {
+        margin-top: 1rem !important;
+    }
+}
+
 @media (min-width: 1650px) {
   #sidebar .profile-wrapper {
     margin-top: 1rem !important;
