@@ -101,23 +101,21 @@ StartupWMClass=com.bitwig.BitwigStudio
 
 Save and exit from `nano` (`CTRL+O` then `CTRL+X`):
 
-Finally, update the system desktop entries and icons using: 
+Next, update the system desktop entries and icons using: 
 
 ```
 kbuildsycoca5
 gtk-update-icon-cache ~/.local/share/icons/hicolor/
 ```
 
-Now Bitwig should be available in the application launcher.
-
-Clean up temporary files:
+Finally, clean up temporary files:
 
 ```bash
 cd ~
 rm -rf ~/bitwig-extract
 ```
 
-At this point you can use Bitwig.
+At this point you can use Bitwig, and it should be available in the application launcher. If you would like to find out how to configure the system for performance, and set up `yabridge` for VST plugins, please read on!
 
 ## System Optimization
 
