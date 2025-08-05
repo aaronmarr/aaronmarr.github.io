@@ -208,8 +208,86 @@ Your VSTs should now appear in Bitwig's plugin browser after rescanning.
 
 
 
+https://www.youtube.com/watch?v=zmmdyX381Go
 
 
 https://medium.com/@jeromedecinco/tuned-in-linux-optimizing-system-performance-with-profiles-1c852acfb02e
 
 https://discussion.fedoraproject.org/t/pipewire-configuration-for-low-latency/32221/4
+
+Install rtcqs, and fix errors
+
+--
+
+User aaron is currently not member of a group that has sufficient rtprio (0) and memlock (8388608) set. Add yourself to a group with sufficent limits set, i.e. audio or realtime, with 'sudo usermod -a -G <group_name> aaron. See also https://wiki.linuxaudio.org/wiki/system_configuration#audio_group 
+
+aaron@luna ~> grep -r 'rtprio\|memlock' /etc/security/limits.d/
+
+/etc/security/limits.d/25-pw-rlimits.conf:@pipewire   - rtprio  70
+/etc/security/limits.d/25-pw-rlimits.conf:@pipewire   - memlock 4194304
+/etc/security/limits.d/95-jack.conf:@jackuser - rtprio 70
+/etc/security/limits.d/95-jack.conf:@jackuser - memlock 4194304
+/etc/security/limits.d/95-jack.conf:@pulse-rt - rtprio 20
+/etc/security/limits.d/realtime.conf:@realtime       -       rtprio          99
+/etc/security/limits.d/realtime.conf:@realtime       -       memlock         unlimited
+
+sudo usermod -a -G realtime aaron
+
+logout and login
+
+then
+
+groups aaron
+
+--
+
+Simultaneous Multithreading (SMT, also called hyper-threading) is enabled. This can cause spikes in DSP load at higher DSP loads. Consider disabling SMT when experiencing such spikes with 'echo off | sudo tee /sys/devices/system/cpu/smt/control'. See also https://wiki.linuxaudio.org/wiki/system_configuration#simultaneous_multithreading
+
+Check if smt enabled
+
+cat /sys/devices/system/cpu/smt/control
+on
+
+To disable temporariy
+
+echo off | sudo tee /sys/devices/system/cpu/smt/control
+off
+
+To make persistent across boots
+
+ sudo nano /etc/default/grub
+
+GRUB_CMDLINE_LINUX="rhgb quiet nosmt"
+
+Then update grub
+
+sudo grub2-mkconfig -o /etc/grub2.cfg
+Generating grub configuration file ...
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+
+then sudo reboot
+
+--
+
+The scaling governor of one or more CPUs is not set to 'performance'. You can set the scaling governor to 'performance' with 'cpupower frequency-set -g performance' or 'cpufreq-set -r -g performance' (Debian/Ubuntu). See also https://wiki.linuxaudio.org/wiki/system_configuration#cpu_frequency_scaling
+
+sudo cpupower frequency-set -g performance
+
+--
+
+Kernel 6.15.8-200.fc42.x86_64 without 'threadirqs' parameter or real-time capabilities found. See also https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel
+
+sudo nano /etc/default/grub
+
+
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="rhgb quiet nosmt threadirqs"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_ENABLE_BLSCFG=true
+
+sudo grub2-mkconfig -o /etc/grub2.cfg
