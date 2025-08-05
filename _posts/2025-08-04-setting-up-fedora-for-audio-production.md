@@ -99,7 +99,7 @@ X-KDE-Username=
 StartupWMClass=com.bitwig.BitwigStudio
 ```
 
-Save and exit from `nano` (CTRL+O then CTRL+X):
+Save and exit from `nano` (`CTRL+O` then `CTRL+X`):
 
 Finally, update the system desktop entries and icons using: 
 
