@@ -69,7 +69,9 @@ mkdir -p ~/.local/share/icons/hicolor/128x128/apps/
 cp /home/aaron/bitwig-extract/usr/share/icons/hicolor/128x128/apps/com.bitwig.BitwigStudio.png ~/.local/share/icons/hicolor/128x128/apps/bitwig.png
 ```
 
-Note that unfortunately, until Bitwig support Wayland natively, you will still see the X11 icon in the panel when Bitwig is running. There may be a workaround for this, but I've not been able to find one at the time of writing.
+> Note that unfortunately, until Bitwig supports Wayland natively, you will still see the X11 icon in the panel when Bitwig is running. There may be a workaround for this, but I've not been able to find one at the time of writing.
+{: .prompt-info }
+
 
 Edit the desktop file to fix paths:
 
