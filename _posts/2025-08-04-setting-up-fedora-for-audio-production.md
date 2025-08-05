@@ -10,43 +10,41 @@ pin: true
 media_subpath: '/posts/20180809'
 ---
 
-This guide covers setting up Fedora Linux for audio production, including installing Bitwig Studio, optimizing for low-latency audio, and running Windows VSTs via yabridge.
-
 ## Installing Bitwig
 
 Bitwig is available for Linux in 2 flavours: there's a Flatpak version, and an official Ubuntu package. I'm staying away from the Flatpak version due to Flatpak's sandboxing, which prevents use of tools such as [Jack](https://jackaudio.org/).
 
-To install the Ubuntu version on Fedora:
+To install the Ubuntu version on Fedora we will need to convert the `.deb` package into `rpm` format. For this, I'm using [alien](https://packages.fedoraproject.org/pkgs/alien/alien/#:~:text=Alien%20is%20a%20program%20that,package%20format%20and%20install%20it.):
 
-Install [alien](https://packages.fedoraproject.org/pkgs/alien/alien/#:~:text=Alien%20is%20a%20program%20that,package%20format%20and%20install%20it.) (converts .deb packages to .rpm):
-    ```bash
-    sudo dnf install alien
-    ```
+```bash
+sudo dnf install alien
+```
     
-[Download Bitwig for Ubuntu](https://www.bitwig.com/download/) and convert the .deb package to RPM:
-    ```bash
-    cd ~/Downloads
-    sudo alien -r bitwig-studio-5.3.12.deb
-    ```
+Next, [download Bitwig for Ubuntu](https://www.bitwig.com/download/) and convert the `.deb` package to `rpm`:
 
-If you get `libjpeg` errors, install the required library:
+```bash
+cd ~/Downloads
+sudo alien -r bitwig-studio-5.3.12.deb
+```
+
+I THINK THIS CAN BE REMOVED
 
 ```bash
 sudo dnf copr enable aflyhorse/libjpeg 
 sudo dnf install libjpeg8
 ```
 
-Extract and install Bitwig manually:
+Having created the `.rpm` package, I was still no able to `dnf install` it, so we'll manually install the binary and create a `.desktop` entry for KDE's launcher.
 
 ```bash
-# Create temporary extraction directory
+# Create a temporary directory
 mkdir ~/bitwig-extract
 cd ~/bitwig-extract
 
-# Extract the RPM contents
+# Extract the Bitwig package contents
 rpm2cpio ~/Downloads/bitwig-studio-5.3.12-2.x86_64.rpm | cpio -idmv
 
-# Install to system location
+# Install the Bitwig binary to the system
 sudo mkdir -p /opt/bitwig-studio
 sudo cp -r opt/bitwig-studio/* /opt/bitwig-studio/
 
@@ -54,22 +52,24 @@ sudo cp -r opt/bitwig-studio/* /opt/bitwig-studio/
 sudo ln -s /opt/bitwig-studio/bitwig-studio /usr/local/bin/bitwig
 ```
 
-Test the installation:
+At this point you should be able to run Bitwig from the command line:
 
 ```bash
 bitwig
 ```
 
-Create a desktop entry for KDE's launcher:
+Next, we will create a desktop entry for KDE's launcher:
 
 ```bash
 # Copy desktop entry
 cp usr/share/applications/bitwig.desktop ~/.local/share/applications/
 
 # Copy icon to permanent location
-mkdir -p ~/Applications/Bitwig
-cp usr/share/icons/hicolor/128x128/apps/com.bitwig.BitwigStudio.png ~/Applications/Bitwig/
+mkdir -p ~/.local/share/icons/hicolor/128x128/apps/
+cp /home/aaron/bitwig-extract/usr/share/icons/hicolor/128x128/apps/com.bitwig.BitwigStudio.png ~/.local/share/icons/hicolor/128x128/apps/bitwig.png
 ```
+
+Note that unfortunately, until Bitwig support Wayland natively, you will still see the X11 icon in the panel when Bitwig is running. There may be a workaround for this, but I've not been able to find one at the time of writing.
 
 Edit the desktop file to fix paths:
 
@@ -81,14 +81,31 @@ Update the content to use correct paths:
 
 ```ini
 [Desktop Entry]
-Name=Bitwig Studio
-Exec=/usr/local/bin/bitwig
-Icon=/home/$USER/Applications/Bitwig/com.bitwig.BitwigStudio.png
-Type=Application
 Categories=AudioVideo;Audio;Music;Midi;
-Terminal=false
+Comment=
+Exec=/opt/bitwig-studio/BitwigStudio
+Icon=com.bitwig.BitwigStudio
+Name=Bitwig Studio
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
 StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+StartupWMClass=com.bitwig.BitwigStudio
 ```
+
+Finally, update the system desktop entries and icons using: 
+
+```
+kbuildsycoca5
+gtk-update-icon-cache ~/.local/share/icons/hicolor/
+```
+
+Now Bitwig should be available in the application launcher.
 
 Clean up temporary files:
 
