@@ -10,38 +10,6 @@ pin: true
 media_subpath: '/posts/20180809'
 ---
 
-Before we get started, here's the output of `fastfetch`:
-
-```bash
-             .',;::::;,'.                 aaron@luna
-         .';:cccccccccccc:;,.             ----------
-      .;cccccccccccccccccccccc;.          OS: Fedora Linux 42 (KDE Plasma Desktop Edition) x86_4
-    .:cccccccccccccccccccccccccc:.        Host: 21K9CTO1WW (ThinkPad P16s Gen 2)
-  .;ccccccccccccc;.:dddl:.;ccccccc;.      Kernel: Linux 6.15.8-200.fc42.x86_64
- .:ccccccccccccc;OWMKOOXMWd;ccccccc:.     Uptime: 16 mins
-.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.    Packages: 3007 (rpm)
-,cccccccccccccc;MMM.;cc;;WW:;cccccccc,    Shell: fish 4.0.2
-:cccccccccccccc;MMM.;cccccccccccccccc:    Display (LEN41B7): 1920x1200 @ 60 Hz (as 1601x1000) i]
-:ccccccc;oxOOOo;MMM000k.;cccccccccccc:    DE: KDE Plasma 6.4.3
-cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;    WM: KWin (Wayland)
-ccccc;XMO';cccc;MMM.;cccccccccccccccc'    WM Theme: Breeze
-ccccc;MMo;ccccc;MMW.;ccccccccccccccc;     Theme: Breeze (Dark) [Qt], Breeze [GTK3]
-ccccc;0MNc.ccc.xMMd;ccccccccccccccc;      Icons: breeze-dark [Qt], breeze-dark [GTK3/4]
-cccccc;dNMWXXXWM0:;cccccccccccccc:,       Font: Noto Sans (10pt) [Qt], Noto Sans (10pt) [GTK3/4]
-cccccccc;.:odl:.;cccccccccccccc:,.        Cursor: breeze (24px)
-ccccccccccccccccccccccccccccc:'.          Terminal: konsole 25.4.3
-:ccccccccccccccccccccccc:;,..             Terminal Font: JetBrainsMono Nerd Font Mono (10pt)
- ':cccccccccccccccc::;,.                  CPU: AMD Ryzen 7 PRO 7840U (8) @ 3.30 GHz
-                                          GPU: AMD Radeon 780M Graphics [Integrated]
-                                          Memory: 3.75 GiB / 54.56 GiB (7%)
-                                          Swap: 0 B / 8.00 GiB (0%)
-                                          Disk (/): 159.54 GiB / 952.28 GiB (17%) - btrfs
-                                          Local IP (wlp2s0): 192.168.0.103/24
-                                          Battery (5B11M90039): 52% [Discharging]
-                                          Locale: C.UTF-8
-
-```
-
 ## Installing Bitwig
 
 Bitwig is available for Linux in two flavours. There's a Flatpak version, and an official Ubuntu package. I'm staying away from the Flatpak version due to Flatpak's sandboxing, which prevents us from using [yabridge](https://github.com/robbert-vdh/yabridge) and [Jack](https://jackaudio.org/).
@@ -388,5 +356,23 @@ vm.swappiness=10
 
 Then `sudo reboot` to apply the changes.
 
-## WineTKG
+## Install WineTKG and yabridge
 
+If you're planning on using Windows VSTs, you'll need to install Wine and yabridge. There's an excellent copr repo containing all the steps required to get this working.
+
+https://copr.fedorainfracloud.org/coprs/patrickl/wine-tkg/
+
+> In this section about `pipewire-winasio` you need to run `wine prefix` to generate the `WINEPREFIX`. It took me some time to figure that out, so I'm sharing it here:
+{: .prompt-info }
+
+```
+wine prefix
+
+/home/aaron/.wine
+```
+
+Then use the returned path to set the `WINEPREFIX` in the subsequent commands, e.g., 
+
+```
+env WINEPREFIX=/home/aaron/.wine /usr/bin/wineasio-register
+```
