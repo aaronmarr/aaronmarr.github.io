@@ -10,6 +10,38 @@ pin: true
 media_subpath: '/posts/20180809'
 ---
 
+Before we get started, here's the output of `fastfetch`:
+
+```bash
+             .',;::::;,'.                 aaron@luna
+         .';:cccccccccccc:;,.             ----------
+      .;cccccccccccccccccccccc;.          OS: Fedora Linux 42 (KDE Plasma Desktop Edition) x86_4
+    .:cccccccccccccccccccccccccc:.        Host: 21K9CTO1WW (ThinkPad P16s Gen 2)
+  .;ccccccccccccc;.:dddl:.;ccccccc;.      Kernel: Linux 6.15.8-200.fc42.x86_64
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.     Uptime: 16 mins
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.    Packages: 3007 (rpm)
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,    Shell: fish 4.0.2
+:cccccccccccccc;MMM.;cccccccccccccccc:    Display (LEN41B7): 1920x1200 @ 60 Hz (as 1601x1000) i]
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:    DE: KDE Plasma 6.4.3
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;    WM: KWin (Wayland)
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'    WM Theme: Breeze
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;     Theme: Breeze (Dark) [Qt], Breeze [GTK3]
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;      Icons: breeze-dark [Qt], breeze-dark [GTK3/4]
+cccccc;dNMWXXXWM0:;cccccccccccccc:,       Font: Noto Sans (10pt) [Qt], Noto Sans (10pt) [GTK3/4]
+cccccccc;.:odl:.;cccccccccccccc:,.        Cursor: breeze (24px)
+ccccccccccccccccccccccccccccc:'.          Terminal: konsole 25.4.3
+:ccccccccccccccccccccccc:;,..             Terminal Font: JetBrainsMono Nerd Font Mono (10pt)
+ ':cccccccccccccccc::;,.                  CPU: AMD Ryzen 7 PRO 7840U (8) @ 3.30 GHz
+                                          GPU: AMD Radeon 780M Graphics [Integrated]
+                                          Memory: 3.75 GiB / 54.56 GiB (7%)
+                                          Swap: 0 B / 8.00 GiB (0%)
+                                          Disk (/): 159.54 GiB / 952.28 GiB (17%) - btrfs
+                                          Local IP (wlp2s0): 192.168.0.103/24
+                                          Battery (5B11M90039): 52% [Discharging]
+                                          Locale: C.UTF-8
+
+```
+
 ## Installing Bitwig
 
 Bitwig is available for Linux in two flavours. There's a Flatpak version, and an official Ubuntu package. I'm staying away from the Flatpak version due to Flatpak's sandboxing, which prevents us from using [yabridge](https://github.com/robbert-vdh/yabridge) and [Jack](https://jackaudio.org/).
@@ -356,163 +388,5 @@ vm.swappiness=10
 
 Then `sudo reboot` to apply the changes.
 
-### Filesystem
+## WineTKG
 
-> The following mounts should be avoided for audio purposes: /boot. See also https://wiki.linuxaudio.org/wiki/system_configuration#filesystems
-{: .prompt-warning }
-
-
-Setting up a dedicated partition for audio on Fedora involves creating a separate partition on your disk, formatting it with an appropriate filesystem, and then configuring it for use. Here’s a step-by-step guide to setting it up:
-
-1. Identify the Disk and Create a Partition
-Before you create a new partition, you'll need to identify the disk where you want to allocate space for audio.
-
-Step 1: Identify the disk
-Open a terminal and use lsblk to list the available block devices (disks):
-
-bash
-Copy
-Edit
-lsblk
-This will list all the disks and partitions on your system, like:
-
-pgsql
-Copy
-Edit
-NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda           8:0    0  500G  0 disk
-├─sda1        8:1    0  500M  0 part /boot
-├─sda2        8:2    0  100G  0 part /
-└─sda3        8:3    0  400G  0 part
-In this example, let's assume that /dev/sda3 is the free partition that we want to allocate for audio storage.
-
-Step 2: Create a new partition (if necessary)
-If you don't have an unused partition, you can use gdisk (for GPT partitioning) or fdisk (for MBR) to create one. Here's how to use gdisk to create a new partition:
-
-Run gdisk on the target disk (in this case, /dev/sda):
-
-bash
-Copy
-Edit
-sudo gdisk /dev/sda
-Create a new partition:
-
-Press n to create a new partition.
-
-Choose a partition number (the default is fine).
-
-Select the partition size (you can choose the full remaining space or a specific size).
-
-Choose the default partition type (8300 for Linux filesystem).
-
-Write the changes:
-
-Press w to write the partition table and exit gdisk.
-
-Now, you should have a new partition (e.g., /dev/sda3).
-
-2. Format the New Partition
-You need to format the new partition with a filesystem. We'll use ext4 because it’s stable and works well for most Linux workloads, but you could also use XFS for better performance with large files.
-
-To format the partition, run:
-
-bash
-Copy
-Edit
-sudo mkfs.ext4 /dev/sda3
-This will format /dev/sda3 with the ext4 filesystem.
-
-3. Create a Mount Point
-Now you need to create a mount point where the new partition will be accessed. For example, you could mount it under /mnt/audio (you can choose any directory, but this is a common convention for mounting additional partitions).
-
-Run:
-
-bash
-Copy
-Edit
-sudo mkdir /mnt/audio
-4. Edit /etc/fstab to Mount the Partition on Boot
-To ensure that the partition is mounted automatically every time the system boots, you'll need to add it to your /etc/fstab.
-
-Get the UUID of the newly created partition:
-
-bash
-Copy
-Edit
-sudo blkid /dev/sda3
-The output will look something like this:
-
-pgsql
-Copy
-Edit
-/dev/sda3: UUID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" TYPE="ext4"
-Copy the UUID (the long alphanumeric string).
-
-Open /etc/fstab in a text editor:
-
-bash
-Copy
-Edit
-sudo nano /etc/fstab
-Add the following line at the end of the file:
-
-ini
-Copy
-Edit
-UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/audio ext4 defaults,noatime 0 2
-Replace xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx with the UUID of your partition.
-
-defaults: Default mount options.
-
-noatime: Avoid updating the last access time of files, which reduces disk I/O.
-
-The 0 2 at the end of the line indicates that the partition should be checked after the root partition at boot (this is typical for non-boot partitions).
-
-Save and exit the editor.
-
-5. Mount the Partition
-To mount the partition without rebooting, run:
-
-bash
-Copy
-Edit
-sudo mount -a
-This command reads /etc/fstab and mounts any partitions listed there that are not already mounted.
-
-6. Verify the Mount
-Check that the partition is correctly mounted:
-
-bash
-Copy
-Edit
-lsblk
-You should see your new partition listed with /mnt/audio as the mount point:
-
-bash
-Copy
-Edit
-NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda           8:0    0  500G  0 disk
-├─sda1        8:1    0  500M  0 part /boot
-├─sda2        8:2    0  100G  0 part /
-└─sda3        8:3    0  400G  0 part /mnt/audio
-7. Use the Audio Partition
-Now that your partition is set up, you can start storing your audio data in /mnt/audio. You can create directories and store projects, audio files, buffers, or whatever data is needed for your audio production workflow.
-
-bash
-Copy
-Edit
-mkdir /mnt/audio/projects
-mkdir /mnt/audio/recordings
-You can also change the ownership of this partition to your user, so you don’t need to use sudo to write files:
-
-bash
-Copy
-Edit
-sudo chown -R $USER:$USER /mnt/audio
-8. Optional: Set Up Performance Optimizations
-For audio workloads, it’s important to optimize your disk for performance. Here are a few optional steps:
-
-Disable access time updates: The noatime option (set in /etc/fstab) prevents the kernel from updating the access time of files when they are read, which can reduce unnecessary disk writes and improve performance.
-
-Use SSD: If possible, consider using a Solid-State Drive (SSD) for your audio partition, as it will provide much faster read and write speeds compared to traditional hard drives.
