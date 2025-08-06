@@ -154,13 +154,8 @@ rtcqs_gui
 
 ### Group limits
 
-Problem:
-
-```bash
-User aaron is currently not member of a group that has sufficient rtprio (0) and memlock (8388608) set. Add yourself to a group with sufficent limits set, i.e. audio or realtime, with 'sudo usermod -a -G <group_name> aaron. See also https://wiki.linuxaudio.org/wiki/system_configuration#audio_group 
-```
-
-Solution:
+> User aaron is currently not member of a group that has sufficient rtprio (0) and memlock (8388608) set. Add yourself to a group with sufficent limits set, i.e. audio or realtime, with 'sudo usermod -a -G <group_name> aaron. See also https://wiki.linuxaudio.org/wiki/system_configuration#audio_group 
+{: .prompt-warning 
 
 My current user was not assigned to a group with sufficient rtprio and memlock set. Run the following command to list groups with rtprio and memlock limits:
 
@@ -195,13 +190,8 @@ aaron : aaron wheel video docker realtime
 
 ### Simultaneous Multithreading
 
-Problem:
-
-```
-Simultaneous Multithreading (SMT, also called hyper-threading) is enabled. This can cause spikes in DSP load at higher DSP loads. Consider disabling SMT when experiencing such spikes with 'echo off | sudo tee /sys/devices/system/cpu/smt/control'. See also https://wiki.linuxaudio.org/wiki/system_configuration#simultaneous_multithreading
-```
-
-Solution:
+> Simultaneous Multithreading (SMT, also called hyper-threading) is enabled. This can cause spikes in DSP load at higher DSP loads. Consider disabling SMT when experiencing such spikes with 'echo off | sudo tee /sys/devices/system/cpu/smt/control'. See also https://wiki.linuxaudio.org/wiki/system_configuration#simultaneous_multithreading
+{: .prompt-warning 
 
 To check if smt is enabled, run the following command:
 
@@ -252,13 +242,7 @@ Then `sudo reboot` to reboot the system.
 
 ### CPU Scaling
 
-Problem:
-
-```bash
-The scaling governor of one or more CPUs is not set to 'performance'. You can set the scaling governor to 'performance' with 'cpupower frequency-set -g performance' or 'cpufreq-set -r -g performance' (Debian/Ubuntu). See also https://wiki.linuxaudio.org/wiki/system_configuration#cpu_frequency_scaling
-```
-
-Solution:
+> The scaling governor of one or more CPUs is not set to 'performance'. You can set the scaling governor to 'performance' with 'cpupower frequency-set -g performance' or 'cpufreq-set -r -g performance' (Debian/Ubuntu). See also https://wiki.linuxaudio.org/wiki/system_configuration#cpu_frequency_scaling
 
 For this one I had to set the performance governour of my CPU to `performace`. 
 
@@ -323,13 +307,8 @@ Now, the CPU governor will automatically be set to performance on every boot.
 
 ### Preempt RT
 
-Problem:
-
-```bash
-Kernel 6.15.8-200.fc42.x86_64 without 'threadirqs' parameter or real-time capabilities found. See also https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel
-```
-
-Solution:
+> Kernel 6.15.8-200.fc42.x86_64 without 'threadirqs' parameter or real-time capabilities found. See also https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel
+{: .prompt-warning 
 
 Threaded IRQs (Interrupt Requests) in the Linux kernel allow interrupt handling to be split into two parts: a "hard IRQ" handler that runs in interrupt context (with minimal work) and a "threaded IRQ" handler that runs in a kernel thread context, enabling more complex operations. This separation helps minimize the time interrupts are disabled, improving system responsiveness and simplifying interrupt handling, according to the Linux Device Drivers book.
 
@@ -352,25 +331,15 @@ sudo reboot
 
 ### Spectre/Meltdown Mitigations
 
-Problem:
-
-```bash
-Kernel with Spectre/Meltdown mitigations found. This could have a negative impact on the performance of your system. See also https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations
-```
-
-Solution:
+> Kernel with Spectre/Meltdown mitigations found. This could have a negative impact on the performance of your system. See also https://wiki.linuxaudio.org/wiki/system_configuration#disabling_spectre_and_meltdown_mitigations
+{: .prompt-warning 
 
 This one I am leaving as-is. I don't want to open up my system to potential cyber attacks. For systems which are completely offline, I might consider disabling mitigations, but for the relatively minor performance boost, and considering the amount of third-party code I run on my machine, I'm happy to leave the mitigations in place. 
 
 ### Swappiness
 
-Problem:
-
-```
-vm.swappiness is set to 60 which is too high. Set swappiness to a lower value by adding 'vm.swappiness=10' to /etc/sysctl.conf and run 'sysctl --system'. See also https://wiki.linuxaudio.org/wiki/system_configuration#sysctlconf
-```
-
-Solution: 
+> The following mounts should be avoided for audio purposes: /boot. See also https://wiki.linuxaudio.org/wiki/system_configuration#filesystems
+{: .prompt-warning 
 
 The solution for this one is pretty straight-forward. We'll need to create a new system configuration file to override the swappiness with a lower value.
 
@@ -386,13 +355,12 @@ vm.swappiness=10
 
 Then `sudo reboot` to apply the changes.
 
-### Problem
+### Filesystem
 
-The following mounts should be avoided for audio purposes: /boot. See also https://wiki.linuxaudio.org/wiki/system_configuration#filesystems
+> The following mounts should be avoided for audio purposes: /boot. See also https://wiki.linuxaudio.org/wiki/system_configuration#filesystems
+{: .prompt-warning 
 
-How can I set up a dedicated partition for audio? I'm on fedora
 
-ChatGPT said:
 Setting up a dedicated partition for audio on Fedora involves creating a separate partition on your disk, formatting it with an appropriate filesystem, and then configuring it for use. Here’s a step-by-step guide to setting it up:
 
 1. Identify the Disk and Create a Partition
