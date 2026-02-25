@@ -95,12 +95,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  /* Light mode: sky gradient at low opacity — ~33% effective saturation,
-     close to Nord Frost (nord8 193°, 43%). High desat on img keeps it subtle. */
   background: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--color-sky-300) 35%, transparent),
-    color-mix(in srgb, var(--color-sky-600) 40%, transparent)
+    color-mix(in srgb, var(--color-red-300) 35%, transparent),
+    color-mix(in srgb, var(--color-red-600) 40%, transparent)
   );
   mix-blend-mode: color;
 }
@@ -113,11 +111,10 @@
 
 @media (prefers-color-scheme: dark) {
   .site-footer__portrait::after {
-    /* Dark mode: slightly higher overlay opacity for the darker background */
     background: linear-gradient(
       160deg,
-      color-mix(in srgb, var(--color-sky-300) 45%, transparent),
-      color-mix(in srgb, var(--color-sky-600) 50%, transparent)
+      color-mix(in srgb, var(--color-red-300) 45%, transparent),
+      color-mix(in srgb, var(--color-red-600) 50%, transparent)
     );
   }
 

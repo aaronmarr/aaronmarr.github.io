@@ -140,7 +140,7 @@ Then you can decide the technical details and which platforms to support.
 
 ## The landscape
 
-Design Tokens are not just an academic concept, they are used by teams large and small. Here is a section I surveyed when putting this article together: 
+Don't just take my word for it. Here is a section companies and teams using Design Tokens which I surveyed when putting this article together: 
 
 **<a href="https://www.lightningdesignsystem.com/2e1ef8501/p/85bd85-lightning-design-system-2" target="_blank">Lightning Design System</a> (Salesforce)** — Where it started. Tokens as consumable packages for multiple platforms.
 
@@ -172,9 +172,7 @@ The **<a href="https://www.designtokens.org/" target="_blank">W3C Design Tokens 
 
 **<a href="https://penpot.app/blog/what-are-design-tokens-a-complete-guide/" target="_blank">Penpot</a>** supports W3C-standard tokens natively — import, export, and a REST API on the way.
 
-As <a href="https://www.designsystemscollective.com/design-tokens-demystified-a1d3dfa212c2" target="_blank">the Design Systems Collective puts it</a>, the real value isn't technical consistency — it's getting designers and developers to agree on what the decisions actually are.
-
-## References and Further reading
+## References and further reading
 
 - <a href="https://zeroheight.com/blog/a-basic-introduction-to-design-tokens/" target="_blank">A Basic Introduction to Design Tokens</a> — Zeroheight
 - <a href="https://piccalil.li/blog/what-are-design-tokens/" target="_blank">What Are Design Tokens?</a> — Andy Bell, Piccalilli

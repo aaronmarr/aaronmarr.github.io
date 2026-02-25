@@ -2,43 +2,41 @@
    Based on Andy Bell's modern reset: https://andy-bell.co.uk/a-more-modern-css-reset/
 */
 
-/* Semantic colour tokens — Tailwind Slate palette
-   Hue analysis: gray (220°, exact Nord hue) chosen over slate (215°, 16% sat).
-   Gray hue matches Nord's blue-gray perfectly; lower saturation (9% vs 16%) gives
-   a slightly flatter, more neutral tone. Accent/links → sky palette.
-   Contrast ratios verified on gray-100 / gray-800 backgrounds.
+/* Semantic colour tokens — Tailwind Stone + Orange palette
+   Neutrals: Stone (warm grey, hue ~30-60°)
+   Accents/links: Orange (punchy contrast against stone)
 
-   Light theme  bg=gray-100  subtle=gray-200  text=gray-700  heading=gray-800
-   Dark theme   bg=gray-800  subtle=gray-700  text=gray-300  heading=gray-100
-   Accents      light=sky-700 (5.41:1)  dark=sky-400 (6.76:1)
+   Light theme  bg=stone-100  subtle=stone-200  text=stone-700  heading=stone-800
+   Dark theme   bg=stone-900  subtle=stone-800  text=stone-300  heading=stone-100
+   Accents      light=red-600  dark=red-500
 */
 :root {
-  --color-bg:             var(--color-gray-100);
-  --color-bg-subtle:      var(--color-gray-200);
-  --color-text:           var(--color-gray-700);
-  --color-heading:        var(--color-gray-800);
-  --color-text-muted:     var(--color-gray-500);
-  --color-border:         var(--color-gray-300);
-  --color-link:           var(--color-sky-700);
-  --color-link-hover:     var(--color-sky-800);
-  --color-accent:         var(--color-sky-700);
-  --color-code-bg:        var(--color-gray-200);
-  --color-code-inline-bg: var(--color-gray-200);
+  --color-bg:             var(--color-stone-100);
+  --color-bg-subtle:      var(--color-stone-200);
+  --color-text:           var(--color-stone-700);
+  --color-heading:        var(--color-stone-800);
+  --color-text-muted:     var(--color-stone-500);
+  --color-border:         var(--color-stone-200);
+  --color-link:           var(--color-red-600);
+  --color-link-hover:     var(--color-red-700);
+  --color-accent:         var(--color-red-600);
+  --color-code-bg:        var(--color-stone-200);
+  --color-code-inline-bg: var(--color-stone-200);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg:             var(--color-gray-950);
-    --color-bg-subtle:      var(--color-gray-800);
-    --color-text:           var(--color-gray-300);
-    --color-heading:        var(--color-gray-100);
-    --color-text-muted:     var(--color-gray-400);
-    --color-border:         var(--color-gray-600);
-    --color-link:           var(--color-sky-400);
-    --color-link-hover:     var(--color-sky-300);
-    --color-accent:         var(--color-sky-400);
-    --color-code-bg:        var(--color-gray-900);
-    --color-code-inline-bg: var(--color-gray-700);
+    --color-bg:             var(--color-stone-900);
+    --color-bg-subtle:      var(--color-stone-800);
+    --color-text:           var(--color-stone-300);
+    --color-heading:        var(--color-stone-100);
+    --color-text-muted:     var(--color-stone-400);
+    --color-border:         var(--color-stone-600);
+    --color-link:           var(--color-red-400);
+    --color-link-hover:     var(--color-red-400);
+    --color-accent:         var(--color-red-500);
+    --color-code-bg:        var(--color-stone-800);
+    --color-code-inline-bg: var(--color-stone-800);
   }
 }
 
@@ -61,8 +59,8 @@ html {
 body {
   min-height: 100svh;
   line-height: var(--leading-body);
-  font-family: "Supreme", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   font-size: var(--step-0);
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -116,17 +114,14 @@ h4 {
 }
 
 p {
-  /* max-width: 45rem; */
   text-wrap: pretty;
-  letter-spacing: -0.019em;
 }
 
 p em {
-    word-spacing: -0.15em;
-    font-size: calc(var(--step-0) + 0.02em);
-    /* letter-spacing: 0; */
-    vertical-align: top;
-    font-weight: 500;
+  font-size: calc(var(--step-0) + 0.02em);
+  vertical-align: top;
+  font-weight: 400;
+  display: inline-block;
 }
 
 a {

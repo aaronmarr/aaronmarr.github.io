@@ -74,7 +74,7 @@
 }
 
 .prose code {
-  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
   font-size: 0.85em;
   background-color: var(--color-code-bg);
