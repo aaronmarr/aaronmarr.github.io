@@ -124,7 +124,7 @@ p {
 p em {
     word-spacing: -0.15em;
     font-size: calc(var(--step-0) + 0.02em);
-    letter-spacing: 0;
+    /* letter-spacing: 0; */
     vertical-align: top;
     font-weight: 500;
 }
