@@ -1,0 +1,39 @@
+/* Sidebar: intrinsic sidebar + main content layout
+   Default: sidebar left, content right
+   Usage: <div class="sidebar"><aside>sidebar</aside><div>main</div></div>
+
+   Right variant: content left, sidebar right
+   Usage: <div class="sidebar sidebar--right"><div>main</div><aside>sidebar</aside></div>
+
+   Modifiers: style="--sidebar-width: 20rem; --sidebar-gap: var(--space-l)"
+*/
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, var(--space-s-l));
+}
+
+/* Default: first child is the narrow sidebar */
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-width, 15rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+/* Right variant: last child is the narrow sidebar */
+.sidebar--right > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+.sidebar--right > :last-child {
+  flex-basis: var(--sidebar-width, 15rem);
+  flex-grow: 1;
+}

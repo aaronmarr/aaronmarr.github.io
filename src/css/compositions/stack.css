@@ -1,0 +1,14 @@
+/* Stack: vertical flow with consistent spacing
+   Usage: <div class="stack">...</div>
+   Modifier: style="--stack-space: var(--space-l)"
+*/
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack-space, var(--space-s));
+}

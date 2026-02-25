@@ -1,0 +1,11 @@
+/* Cluster: horizontal wrapping layout for groups of items
+   Usage: <div class="cluster">...</div>
+   Modifier: style="--cluster-space: var(--space-m)"
+*/
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-space, var(--space-s));
+  align-items: center;
+}

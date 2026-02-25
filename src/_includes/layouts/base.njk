@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "Aaron Marr" }}</title>
+    <link rel="stylesheet" href="/css/cube.css" />
+    <link rel="alternate" type="application/atom+xml" title="{{ metadata.title }}" href="/feed.xml" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="center site-header__inner">
+        <a href="/" class="site-header__brand">Aaron Marr</a>
+        <nav class="site-header__social" aria-label="Social links">
+          <a href="/feed.xml" aria-label="RSS feed">{% include "icons/rss.svg" %}</a>
+        </nav>
+      </div>
+    </header>
+
+    {{ content | safe }}
+
+    <footer class="site-footer">
+      <div class="center site-footer__about">
+        <figure class="site-footer__portrait">
+          <img src="/images/aaron-marr.jpeg" alt="Photo of Aaron Marr">
+        </figure>
+        <p class="site-footer__about-name">About the author</p>
+        <p>I'm a Software Engineer based in Cornwall, UK. I currently work at Sapphire Holidays on a team developing a new property management solution for the UK holiday sector.</p>
+      </div>
+      <div class="center site-footer__inner">
+        <span>© 2026 Aaron Marr. Built with 11ty and hosted on Github Pages.</span>
+      </div>
+    </footer>
+  </body>
+</html>

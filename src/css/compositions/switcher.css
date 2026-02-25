@@ -1,0 +1,15 @@
+/* Switcher: responsive columns that switch to vertical when too narrow
+   Usage: <div class="switcher">...</div>
+   Modifier: style="--switcher-threshold: 30rem; --switcher-space: var(--space-l)"
+*/
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--switcher-space, var(--space-s));
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-threshold, 30rem) - 100%) * 999);
+}

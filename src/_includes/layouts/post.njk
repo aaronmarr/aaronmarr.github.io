@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+---
+<main class="center" style="padding-block-start: var(--space-3xl); padding-block-end: var(--space-xl)">
+  <article class="stack" style="--stack-space: var(--space-2xl)">
+    <header class="">
+    <time class="text-step--1" style="color: var(--color-text-muted)" datetime="{{ date | dateIso }}">{{ date | dateDisplay }}</time>
+      <h1 class="text-step-5">{{ title }}</h1>
+    </header>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </article>
+</main>

@@ -1,0 +1,154 @@
+/* Modern CSS Reset
+   Based on Andy Bell's modern reset: https://andy-bell.co.uk/a-more-modern-css-reset/
+*/
+
+/* Semantic colour tokens — Tailwind Slate palette
+   Hue analysis: gray (220°, exact Nord hue) chosen over slate (215°, 16% sat).
+   Gray hue matches Nord's blue-gray perfectly; lower saturation (9% vs 16%) gives
+   a slightly flatter, more neutral tone. Accent/links → sky palette.
+   Contrast ratios verified on gray-100 / gray-800 backgrounds.
+
+   Light theme  bg=gray-100  subtle=gray-200  text=gray-700  heading=gray-800
+   Dark theme   bg=gray-800  subtle=gray-700  text=gray-300  heading=gray-100
+   Accents      light=sky-700 (5.41:1)  dark=sky-400 (6.76:1)
+*/
+:root {
+  --color-bg:             var(--color-gray-100);
+  --color-bg-subtle:      var(--color-gray-200);
+  --color-text:           var(--color-gray-700);
+  --color-heading:        var(--color-gray-800);
+  --color-text-muted:     var(--color-gray-500);
+  --color-border:         var(--color-gray-300);
+  --color-link:           var(--color-sky-700);
+  --color-link-hover:     var(--color-sky-800);
+  --color-accent:         var(--color-sky-700);
+  --color-code-bg:        var(--color-gray-200);
+  --color-code-inline-bg: var(--color-gray-200);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:             var(--color-gray-950);
+    --color-bg-subtle:      var(--color-gray-800);
+    --color-text:           var(--color-gray-300);
+    --color-heading:        var(--color-gray-100);
+    --color-text-muted:     var(--color-gray-400);
+    --color-border:         var(--color-gray-600);
+    --color-link:           var(--color-sky-400);
+    --color-link-hover:     var(--color-sky-300);
+    --color-accent:         var(--color-sky-400);
+    --color-code-bg:        var(--color-gray-900);
+    --color-code-inline-bg: var(--color-gray-700);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  min-height: 100svh;
+  line-height: var(--leading-body);
+  font-family: "Supreme", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: var(--step-0);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  color: var(--color-heading);
+}
+
+h1,
+h2 {
+  line-height: var(--leading-display);
+}
+
+h3 {
+  line-height: var(--leading-heading);
+}
+
+h4 {
+  line-height: var(--leading-subheading);
+}
+
+h1 {
+  font-size: var(--step-5);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--step-4);
+  font-weight: 700;
+  letter-spacing: -0.019em;
+}
+
+h3 {
+  font-size: var(--step-3);
+  font-weight: 700;
+  letter-spacing: -0.019em;
+}
+
+h4 {
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: -0.019em;
+}
+
+p {
+  /* max-width: 45rem; */
+  text-wrap: pretty;
+  letter-spacing: -0.019em;
+}
+
+p em {
+    word-spacing: -0.15em;
+    font-size: calc(var(--step-0) + 0.02em);
+    letter-spacing: 0;
+    vertical-align: top;
+    font-weight: 500;
+}
+
+a {
+  color: currentColor;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}

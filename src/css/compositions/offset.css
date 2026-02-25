@@ -1,0 +1,20 @@
+/* Offset: 5-column grid where the 1st fifth is an empty spacer
+   and the content occupies the remaining 4 fifths.
+   Collapses to full-width on narrow viewports.
+   Usage: <div class="offset"><div></div><div>content</div></div>
+*/
+
+.offset {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+@media (max-width: 40rem) {
+  .offset {
+    grid-template-columns: 1fr;
+  }
+
+  .offset > :last-child {
+    display: none;
+  }
+}

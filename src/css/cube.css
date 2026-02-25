@@ -1,0 +1,62 @@
+/* CUBE CSS Entry Point
+   Composition · Utility · Block · Exception
+   https://cube.fyi
+*/
+
+/* === Utility: Tailwind CSS === */
+@import "tailwindcss";
+
+/* All @imports must come first */
+@import "./fonts.css";
+@import "./global.css";
+@import "./utopia.css";
+@import "./compositions/offset.css";
+@import "./compositions/stack.css";
+@import "./compositions/cluster.css";
+@import "./compositions/sidebar.css";
+@import "./compositions/switcher.css";
+@import "./compositions/center.css";
+@import "./blocks/site-header.css";
+@import "./blocks/post-card.css";
+@import "./blocks/prose.css";
+@import "./blocks/syntax.css";
+
+/* Map Utopia tokens into Tailwind's theme so utilities
+   like text-step-3, p-space-m, gap-space-s-l work */
+@theme {
+  /* Type scale */
+  --font-size-step--2: var(--step--2);
+  --font-size-step--1: var(--step--1);
+  --font-size-step-0: var(--step-0);
+  --font-size-step-1: var(--step-1);
+  --font-size-step-2: var(--step-2);
+  --font-size-step-3: var(--step-3);
+  --font-size-step-4: var(--step-4);
+  --font-size-step-5: var(--step-5);
+  --font-size-step-6: var(--step-6);
+  --font-size-step-7: var(--step-7);
+  --font-size-step-8: var(--step-8);
+
+  /* Space scale */
+  --spacing-space-3xs: var(--space-3xs);
+  --spacing-space-2xs: var(--space-2xs);
+  --spacing-space-xs: var(--space-xs);
+  --spacing-space-s: var(--space-s);
+  --spacing-space-m: var(--space-m);
+  --spacing-space-l: var(--space-l);
+  --spacing-space-xl: var(--space-xl);
+  --spacing-space-2xl: var(--space-2xl);
+  --spacing-space-3xl: var(--space-3xl);
+
+  /* Space pairs */
+  --spacing-space-3xs-2xs: var(--space-3xs-2xs);
+  --spacing-space-2xs-xs: var(--space-2xs-xs);
+  --spacing-space-xs-s: var(--space-xs-s);
+  --spacing-space-s-m: var(--space-s-m);
+  --spacing-space-m-l: var(--space-m-l);
+  --spacing-space-l-xl: var(--space-l-xl);
+  --spacing-space-xl-2xl: var(--space-xl-2xl);
+  --spacing-space-2xl-3xl: var(--space-2xl-3xl);
+  --spacing-space-s-l: var(--space-s-l);
+
+}
