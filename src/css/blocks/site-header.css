@@ -11,7 +11,7 @@
 
   font-size: var(--step-4);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  /* letter-spacing: -0.03em; */
   text-decoration: none;
   color: inherit;
 }
@@ -132,7 +132,7 @@
   font-size: var(--step-2);
   font-weight: 700;
   color: var(--color-heading);
-  letter-spacing: -0.02em;
+  /* letter-spacing: -0.02em; */
 }
 
 .site-footer__inner {

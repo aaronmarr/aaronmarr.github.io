@@ -92,25 +92,25 @@ h4 {
 h1 {
   font-size: var(--step-5);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  /* letter-spacing: -0.02em; */
 }
 
 h2 {
   font-size: var(--step-4);
   font-weight: 700;
-  letter-spacing: -0.019em;
+  /* letter-spacing: -0.019em; */
 }
 
 h3 {
   font-size: var(--step-3);
   font-weight: 700;
-  letter-spacing: -0.019em;
+  /* letter-spacing: -0.019em; */
 }
 
 h4 {
   font-size: var(--step-2);
   font-weight: 700;
-  letter-spacing: -0.019em;
+  /* letter-spacing: -0.019em; */
 }
 
 p {
