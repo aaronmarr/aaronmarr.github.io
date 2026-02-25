@@ -1,6 +1,6 @@
 ---
 title: "Design Tokens: UI Aesthetics Codified"
-description: "What are Design Token, and why should we care?"
+description: "Bridging the gap between design and front-end development"
 date: 2026-02-16
 layout: layouts/post.njk
 tags: blog
