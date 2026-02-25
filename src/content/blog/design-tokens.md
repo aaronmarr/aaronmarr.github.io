@@ -8,7 +8,7 @@ tags: blog
 
 There's been excitement in the office recently about UI Design, Front-End Development, and bridging the gap between them. I wanted to put together this article to articulate some ideas in this area, mainly around Design Tokens.
 
-Whenever asked "what are Design Tokens", I tend to tailor my answer to whoever is listening (usually developers!). But a purely technical viewpoint can miss the point: Design Tokens are the codified aesthetics of an interface, and using them is one of the most effective ways to bridge the gap between UI design and front-end development.
+Whenever asked "what are Design Tokens", I tend to tailor my answer to whoever is listening (usually developers). But a purely technical viewpoint can miss the point: Design Tokens are the codified aesthetics of an interface, and using them is one of the most effective ways to bridge the gap between UI design and front-end development.
 
 Consider a well-designed room. The colours, proportions, and materials are carefully chosen to work together, creating a sense of balance and harmony. Each decision is made in relation to the others, within a shared visual framework. The result is a coherent aesthetic experience.
 
@@ -118,7 +118,7 @@ Tokens provide structural resistance. When the system is encoded as named data w
 
 A token system that defines every possible value for every property is as useless as no system at all. The art is choosing what to codify and what to leave open.
 
-## Design as data
+## Bridging the gap
 
 In a traditional workflow, a designer creates a mockup, produces a specification, and hands it to a developer to translate into code. The translation is lossy, and things get misread, approximated, and simplified.
 
