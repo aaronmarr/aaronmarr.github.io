@@ -2,41 +2,41 @@
    Based on Andy Bell's modern reset: https://andy-bell.co.uk/a-more-modern-css-reset/
 */
 
-/* Semantic colour tokens — Tailwind Stone + Orange palette
-   Neutrals: Stone (warm grey, hue ~30-60°)
-   Accents/links: Orange (punchy contrast against stone)
+/* Semantic colour tokens — Tailwind Gray + Sky palette
+   Neutrals: Gray (cool blue-grey)
+   Accents/links: Sky (cool contrast against gray)
 
-   Light theme  bg=stone-100  subtle=stone-200  text=stone-700  heading=stone-800
-   Dark theme   bg=stone-900  subtle=stone-800  text=stone-300  heading=stone-100
-   Accents      light=red-600  dark=red-500
+   Light theme  bg=gray-50   subtle=gray-100  text=gray-700  heading=gray-900
+   Dark theme   bg=gray-900  subtle=gray-800  text=gray-300  heading=gray-100
+   Accents      light=sky-600  dark=sky-400
 */
 :root {
-  --color-bg:             var(--color-stone-100);
-  --color-bg-subtle:      var(--color-stone-200);
-  --color-text:           var(--color-stone-700);
-  --color-heading:        var(--color-stone-800);
-  --color-text-muted:     var(--color-stone-500);
-  --color-border:         var(--color-stone-200);
-  --color-link:           var(--color-red-600);
-  --color-link-hover:     var(--color-red-700);
-  --color-accent:         var(--color-red-600);
-  --color-code-bg:        var(--color-stone-200);
-  --color-code-inline-bg: var(--color-stone-200);
+  --color-bg:             var(--color-gray-50);
+  --color-bg-subtle:      var(--color-gray-100);
+  --color-text:           var(--color-gray-700);
+  --color-heading:        var(--color-gray-900);
+  --color-text-muted:     var(--color-gray-500);
+  --color-border:         var(--color-gray-200);
+  --color-link:           var(--color-sky-600);
+  --color-link-hover:     var(--color-sky-700);
+  --color-accent:         var(--color-sky-600);
+  --color-code-bg:        var(--color-gray-100);
+  --color-code-inline-bg: var(--color-gray-100);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg:             var(--color-stone-900);
-    --color-bg-subtle:      var(--color-stone-800);
-    --color-text:           var(--color-stone-300);
-    --color-heading:        var(--color-stone-100);
-    --color-text-muted:     var(--color-stone-400);
-    --color-border:         var(--color-stone-600);
-    --color-link:           var(--color-red-400);
-    --color-link-hover:     var(--color-red-400);
-    --color-accent:         var(--color-red-500);
-    --color-code-bg:        var(--color-stone-800);
-    --color-code-inline-bg: var(--color-stone-800);
+    --color-bg:             var(--color-gray-900);
+    --color-bg-subtle:      var(--color-gray-800);
+    --color-text:           var(--color-gray-300);
+    --color-heading:        var(--color-gray-100);
+    --color-text-muted:     var(--color-gray-400);
+    --color-border:         var(--color-gray-700);
+    --color-link:           var(--color-sky-400);
+    --color-link-hover:     var(--color-sky-300);
+    --color-accent:         var(--color-sky-400);
+    --color-code-bg:        var(--color-gray-800);
+    --color-code-inline-bg: var(--color-gray-800);
   }
 }
 
@@ -59,7 +59,7 @@ html {
 body {
   min-height: 100svh;
   line-height: var(--leading-body);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: var(--step-0);
   color: var(--color-text);
@@ -72,6 +72,7 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: "Sentient", Georgia, "Times New Roman", serif;
   text-wrap: balance;
   color: var(--color-heading);
 }

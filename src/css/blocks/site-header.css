@@ -97,8 +97,8 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--color-red-300) 35%, transparent),
-    color-mix(in srgb, var(--color-red-600) 40%, transparent)
+    color-mix(in srgb, var(--color-sky-300) 35%, transparent),
+    color-mix(in srgb, var(--color-sky-600) 40%, transparent)
   );
   mix-blend-mode: color;
 }
@@ -113,8 +113,8 @@
   .site-footer__portrait::after {
     background: linear-gradient(
       160deg,
-      color-mix(in srgb, var(--color-red-300) 45%, transparent),
-      color-mix(in srgb, var(--color-red-600) 50%, transparent)
+      color-mix(in srgb, var(--color-sky-300) 45%, transparent),
+      color-mix(in srgb, var(--color-sky-600) 50%, transparent)
     );
   }
 

@@ -1,25 +1,25 @@
-/* Syntax highlighting — warm Stone + Red / Orange / Amber palette
-   Backgrounds: light = stone-200 · dark = stone-800
+/* Syntax highlighting — Tailwind docs-inspired cool palette
+   Backgrounds: light = gray-100 · dark = gray-800
 
-   Light: warm colour set on stone-200
-   red-800     keywords / atrule
-   red-700     deleted
-   orange-800  strings / selectors / inserted
-   rose-700    functions / class-names
-   amber-800   property / boolean / numeric
-   amber-700   regex / variable
-   stone-600   operators / punctuation
-   stone-500   comments (italic)
+   Light: cool colour set on gray-100
+   violet-600   keywords / atrule
+   red-600      deleted
+   teal-600     strings / selectors / inserted
+   sky-600      functions / class-names
+   indigo-600   property / boolean / numeric
+   pink-600     regex / variable
+   gray-500     operators / punctuation
+   gray-400     comments (italic)
 
-   Dark: warm colour set on stone-800
-   red-300     keywords / atrule
-   red-400     deleted
-   orange-300  strings / selectors / inserted
-   rose-300    functions / class-names
-   amber-300   property / boolean / numeric
-   amber-200   operators / entity / url
-   yellow-300  regex / variable
-   stone-300   punctuation / comments (italic)
+   Dark: cool colour set on gray-800
+   violet-400   keywords / atrule
+   red-400      deleted
+   teal-300     strings / selectors / inserted
+   sky-300      functions / class-names
+   indigo-300   property / boolean / numeric
+   pink-400     regex / variable
+   gray-400     operators / punctuation
+   gray-500     comments (italic)
 */
 
 .prose pre {
@@ -37,12 +37,12 @@ code .token.comment,
 code .token.prolog,
 code .token.doctype,
 code .token.cdata {
-  color: var(--color-stone-500);
+  color: var(--color-gray-400);
   font-style: italic;
 }
 
 code .token.punctuation {
-  color: var(--color-stone-600);
+  color: var(--color-gray-500);
 }
 
 code .token.property,
@@ -51,11 +51,11 @@ code .token.boolean,
 code .token.number,
 code .token.constant,
 code .token.symbol {
-  color: var(--color-amber-800);
+  color: var(--color-indigo-600);
 }
 
 code .token.deleted {
-  color: var(--color-red-700);
+  color: var(--color-red-600);
 }
 
 code .token.selector,
@@ -64,30 +64,30 @@ code .token.string,
 code .token.char,
 code .token.builtin,
 code .token.inserted {
-  color: var(--color-orange-800);
+  color: var(--color-teal-600);
 }
 
 code .token.operator,
 code .token.entity,
 code .token.url {
-  color: var(--color-stone-600);
+  color: var(--color-gray-500);
 }
 
 code .token.atrule,
 code .token.attr-value,
 code .token.keyword {
-  color: var(--color-red-800);
+  color: var(--color-violet-600);
 }
 
 code .token.function,
 code .token.class-name {
-  color: var(--color-rose-700);
+  color: var(--color-sky-600);
 }
 
 code .token.regex,
 code .token.important,
 code .token.variable {
-  color: var(--color-amber-700);
+  color: var(--color-pink-600);
 }
 
 /* ── Dark mode ──────────────────────────────────────────────────────────────*/
@@ -97,12 +97,12 @@ code .token.variable {
   code .token.prolog,
   code .token.doctype,
   code .token.cdata {
-    color: var(--color-stone-300);
+    color: var(--color-gray-500);
     font-style: italic;
   }
 
   code .token.punctuation {
-    color: var(--color-stone-300);
+    color: var(--color-gray-400);
   }
 
   code .token.property,
@@ -111,7 +111,7 @@ code .token.variable {
   code .token.number,
   code .token.constant,
   code .token.symbol {
-    color: var(--color-amber-300);
+    color: var(--color-indigo-300);
   }
 
   code .token.deleted {
@@ -124,29 +124,29 @@ code .token.variable {
   code .token.char,
   code .token.builtin,
   code .token.inserted {
-    color: var(--color-orange-300);
+    color: var(--color-teal-300);
   }
 
   code .token.operator,
   code .token.entity,
   code .token.url {
-    color: var(--color-amber-200);
+    color: var(--color-gray-400);
   }
 
   code .token.atrule,
   code .token.attr-value,
   code .token.keyword {
-    color: var(--color-red-300);
+    color: var(--color-violet-400);
   }
 
   code .token.function,
   code .token.class-name {
-    color: var(--color-rose-300);
+    color: var(--color-sky-300);
   }
 
   code .token.regex,
   code .token.important,
   code .token.variable {
-    color: var(--color-yellow-300);
+    color: var(--color-pink-400);
   }
 }
