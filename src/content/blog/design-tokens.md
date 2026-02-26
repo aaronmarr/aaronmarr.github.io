@@ -6,9 +6,9 @@ layout: layouts/post.njk
 tags: blog
 ---
 
-There's been excitement in the office recently about UI Design, Front-End Development, and bridging the gap between them. I wanted to put together this article to articulate some ideas in this area, mainly around Design Tokens.
+There's been excitement in the office recently about UI Design, Front-End Development, and bridging the gap between them. I wanted to put together this post to articulate some ideas in this area, mainly around Design Tokens.
 
-Whenever asked "what are Design Tokens", I tend to tailor my answer to whoever is listening (usually developers!). But taking a purely technical viewpoint can miss the point: Design Tokens are the codified aesthetics of an interface.
+Whenever asked "what are Design Tokens", I tend to tailor my answer to whoever is listening (usually developers!). But taking a purely technical stance can miss the point: Design Tokens are the codified aesthetics of an interface.
 
 The elements of a well-designed room are carefully chosen to work together. The colours, proportions and materials create a sense of balance and harmony. Decisions are made about the design in relation to each other, within a visual framework of shared values. Walking into the room creates a coherent aesthetic experience.
 
@@ -18,7 +18,7 @@ Digital interfaces work the same way. The ones that feel _well designed_ are the
 
 <a href="https://spectrum.adobe.com/page/design-tokens/" target="_blank">Adobe Spectrum</a> (Adobe's Design System) refers to design tokens as "design decisions, translated into data." A token can be a colour, spacing unit, font size, drop shadow, or any visual unit in the design system. Tokens should have a name (`color-primary`), a value (`#1d4ed8`), and sometimes a type or description. <a href="https://zeroheight.com/blog/a-basic-introduction-to-design-tokens/" target="_blank">Zeroheight</a> describes them as variables with added metadata.
 
-The term Design Token was coined by <a href="https://www.jina.me/" target="_blank">Jina Anne</a> while working on Salesforce's <a href="https://www.lightningdesignsystem.com/2e1ef8501/p/85bd85-lightning-design-system-2" target="_blank">Lightning Design System</a>, which refers to tokens as "the visual design atoms of the design system." <a href="https://css-tricks.com/what-are-design-tokens/" target="_blank">Robin Rendle's piece on CSS-Tricks</a> highlights why the idea spread: tokens did not just solve a problem for Salesforce, many other teams used them to solve the same issue. <a href="https://piccalil.li/blog/what-are-design-tokens/" target="_blank">Andy Bell also explains why tokens are useful in Front-End Design</a>: flat-file style guides delivered as PDFs just do not work. Developers eyeball the colours, approximate the spacing, and things drift out of sync. The gap between what the designer intended and what a developer creates widens. Design Tokens narrow this gap by eliminating the design handoff. 
+The term Design Token was coined by <a href="https://www.smashingmagazine.com/2019/11/smashing-podcast-episode-3/" target="_blank">Jina Anne</a> while working on Salesforce's <a href="https://www.lightningdesignsystem.com/2e1ef8501/p/85bd85-lightning-design-system-2" target="_blank">Lightning Design System</a>, which refers to tokens as "the visual design atoms of the design system." <a href="https://css-tricks.com/what-are-design-tokens/" target="_blank">Robin Rendle's piece on CSS-Tricks</a> highlights why the idea spread: tokens did not just solve a problem for Salesforce, many other teams used them to solve the same issues in integrating design and front-end development. <a href="https://piccalil.li/blog/what-are-design-tokens/" target="_blank">Andy Bell also explains why tokens are useful in Front-End Design</a>: flat-file style guides delivered as PDFs just do not work. Developers eyeball the colours, approximate the spacing, and things drift out of sync. The gap between what the designer intended and what a developer creates widens. Design Tokens narrow this gap by eliminating the design handoff. 
 
 When you choose the spacing scale, colour palette, type sizes, and *name* them, you articulate the visual logic of the entire product. You make the decisions that give the product its character and personality explicit. 
 
@@ -48,7 +48,7 @@ Typography works the same way. A type scale based on a consistent ratio produces
 
 There is a theory in design and art more broadly that constraints enable creativity rather restrict it. A haiku has seventeen syllables, yet these limitations can produce better work than a blank page and infinite freedom.
 
-Design tokens work on the same principle. A finite colour palette, a limited type scale, and a fixed set of spacing units make *coherence* possible. Without these constraints, every decision is made in isolation. Every component is a fresh canvas. The result is an interface that _feels off_, assembled from parts that were never introduced to each other.
+Design tokens work on the same principle. A finite colour palette, a limited type scale, and a fixed set of spacing units make *coherence* possible. Without these constraints, every decision is made in isolation. Every component is a fresh canvas. The result is an interface that _feels off_, because each element is competing with the next, rather than working together as a whole.
 
 Good designers already work this way intuitively. They establish constraints early and then design within that system. Whether they use the word or not, they are defining Design Tokens. The formalism makes the practice explicit, shareable, and enforceable.
 
@@ -102,7 +102,7 @@ For more information about structuring tokens this way, <a href="https://martinf
 
 ## Coherence over consistency
 
-There's a risk in talking about tokens only in terms of consistency. Consistency sounds mechanical, as if the goal is to stamp out variation and enforce sameness. That's not the point.
+There's a risk in talking about tokens only in terms of consistency. Consistency sounds mechanical, as if the goal is to stamp out variation and enforce sameness. 
 
 The deeper goal is *coherence*: the sense that every part of an interface belongs to the same world, is shaped by the same values, and responds to the same logic. That's much closer to what's meant by aesthetics or craft in digital design. A beautiful interface is one where the blues, greys, spacing, typography, shadows, and motion all feel like they were *considered together*. 
 
