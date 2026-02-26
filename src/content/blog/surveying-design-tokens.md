@@ -10,7 +10,7 @@ In this post I want to survey the current landscape surrounding Design Tokens. M
 
 Instead, I'd like to get an overview of the current state of things, and to update my knowledge in this area. If it can be of use to anyone reading this, then that's a bonus.
 
-AI was used during the writing of this post, but the research done and ideas presented were done by real humans including me and I will give credit where due!
+AI was used during the writing of this post, but the research done and ideas presented were done by real humans and I will give credit where due!
 
 ## What are Design Tokens
 
